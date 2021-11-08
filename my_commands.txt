@@ -1,0 +1,32 @@
+Форматирование кода
+# на mac option + command + L
+# на windows ctrl + alt + I
+
+Запуск сервера
+python manage.py runserver
+
+Создание виртуального окружения
+python -m venv venv
+
+Запуск виртуального окружения проекта
+В Windows: .\venv\Scripts\activate
+В macOS или Linux: source venv/bin/activate
+
+Остановка виртуального окружения
+deactivate
+
+После установки зависимостей выполнить:
+pip freeze > requirements.txt
+При клонировании репозитория на другой компьютер или сервер выполните (предварительно создав и активировав нужное виртуальное окружение):
+pip install -r requirements.txt
+Таким образом, разом установятся все необходимые пакеты.
+
+Установка Django (LTS)
+pip install Django==3.2.9
+python.exe -m pip install --upgrade pip
+
+Создание проекта
+django-admin startproject backend
+
+Установка PostgreSQL
+pip install psycopg2-binary==2.8.6

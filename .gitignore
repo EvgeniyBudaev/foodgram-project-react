@@ -130,3 +130,13 @@ dmypy.json
 
 # .idea
 .idea
+.DS_Store
+.AppleDouble
+.LSOverride
+.vscode/
+*.code-workspace
+
+# static and media directory
+static/
+posts/static/
+media/
