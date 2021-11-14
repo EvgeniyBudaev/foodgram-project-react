@@ -48,12 +48,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'colorfield',
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
     'corsheaders',
     'users.apps.UsersConfig',
     'api.apps.ApiConfig',
+    'foodgram.apps.FoodgramConfig',
 ]
 
 MIDDLEWARE = [

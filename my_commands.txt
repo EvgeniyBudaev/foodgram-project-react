@@ -38,6 +38,7 @@ django-admin startproject backend
 Создание приложения
 python manage.py startapp users
 python manage.py startapp api
+python manage.py startapp foodgram
 
 Установка PostgreSQL
 pip install psycopg2-binary==2.8.6
@@ -48,3 +49,8 @@ pip install djoser
 
 CORS
 pip install django-cors-headers
+
+Fixture - выгрузка данных из БД (dump данных)
+python manage.py dumpdata foodgram.Ingredient > ingredients.json
+Загрузка данных в БД
+python manage.py loaddata ingredients.json

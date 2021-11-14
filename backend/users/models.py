@@ -5,6 +5,7 @@ User = get_user_model()
 
 
 class Follow(models.Model):
+    """Модель подписки."""
     follower = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
