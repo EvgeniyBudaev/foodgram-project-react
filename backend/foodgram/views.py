@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.permissions import IsAuthenticated
@@ -13,8 +14,7 @@ from foodgram.models import (Cart, Favorite, Ingredient, RecipeIngredient,
                              Recipe, Tag)
 from api.pagination import LimitPageNumberPagination
 from api.permissions import IsAdminOrReadOnly, IsOwnerOrReadOnly
-from api.serializers import (CartSerializer, FavoriteSerializer,
-                             IngredientSerializer, TagSerializer,
+from api.serializers import (IngredientSerializer, TagSerializer,
                              RecipeSerializer, CropRecipeSerializer)
 
 
@@ -30,6 +30,8 @@ class TagsViewSet(ReadOnlyModelViewSet):
     permission_classes = (IsAdminOrReadOnly,)
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
+    filter_backends = (DjangoFilterBackend,)
+    filterset_fields = ['name']
 
 
 class RecipeViewSet(viewsets.ModelViewSet):
