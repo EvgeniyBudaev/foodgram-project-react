@@ -8,7 +8,7 @@ User = get_user_model()
 
 
 class FollowAdmin(admin.ModelAdmin):
-    list_display = ('id', 'author', 'follower')
+    list_display = ('id', 'author', 'user')
     empty_value_display = "-пусто-"
 
 
