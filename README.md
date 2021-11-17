@@ -170,3 +170,8 @@ Foodgram реализован для публикации рецептов. Ав
 ```python
  python manage.py loaddata ../data/ingredients.json
 ```
+
+- Для устранения ошибок I1005,...
+```python
+ isort .
+```
