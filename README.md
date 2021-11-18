@@ -28,26 +28,47 @@ Foodgram реализован для публикации рецептов. Ав
 
 ### <a name="Запуск проекта">Запуск проекта</a>
 
-- Клонируем репозиторий и перейдем в него
+- Установите Docker на ваш сервер:
 ```python
- git clone https://github.com/EvgeniyBudaev/https://github.com/EvgeniyBudaev/foodgram-project-react
- cd foodgram-project-react/backend
+ sudo apt install docker.io
 ```
 
-- Активируем виртуальное окружение
+- Установите Docker-compose:
 ```python
- .\venv\Scripts\activate
+ sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 ```
 
-- Выполняем миграции
+- Скопируйте на сервер файлы Docker-compose.yml и nginx.conf из папки infra-deploy/. Не забудьте указать свой ip в конфиге. Там-же создайте файл зависимостей .env
 ```python
- python manage.py makemigrations
- python manage.py migrate
+scp docker-compose.yml admin@62.84.119.85:/home/admin/docker-compose.yml
+scp nginx.conf admin@62.84.119.85:/home/admin/nginx.conf
+```
+
+- Запуск контейнеров выполняется командой:
+```python
+ docker-compose up
+```
+
+- Остановка контейнеров выполняется командой (в home/admin):
+```python
+ docker-compose stop
+```
+
+- После успешного деплоя зайдите на боевой сервер и выполните команды (только после первого деплоя):
+    Собрать статические файлы в STATIC_ROOT:
+```python
+  docker-compose exec backend python3 manage.py collectstatic --noinput
+```
+
+- После запуска контейнеров выполните команды в терминале:
+```python
+ docker-compose exec backend python manage.py makemigrations
+ docker-compose exec backend python manage.py migrate --noinput
 ```
 
 - Создаём суперпользователя
 ```python
- python manage.py createsuperuser
+ docker-compose exec backend python manage.py createsuperuser
 ```
 
 - Устанавливаем зависимости:
