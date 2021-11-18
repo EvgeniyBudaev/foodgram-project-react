@@ -15,6 +15,7 @@ services:
       - ../frontend/:/app/result_build/
 
   backend:
+    build: ../backend
     image: ebudaev/foodgram:v1
     restart: always
     volumes:
@@ -23,7 +24,7 @@ services:
     depends_on:
       - db
     env_file:
-      - ./.env
+      - ../.env
 
   nginx:
     image: nginx:1.19.3
