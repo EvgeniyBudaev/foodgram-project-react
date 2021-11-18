@@ -9,6 +9,12 @@ services:
     env_file:
       - ./.env
 
+  frontend:
+    image: ebudaev/foodgram_frontend:v1
+    restart: always
+    volumes:
+      - ../frontend/:/app/result_build/
+
   backend:
     image: ebudaev/foodgram:v1
     restart: always
@@ -19,13 +25,6 @@ services:
       - db
     env_file:
       - ./.env
-
-  frontend:
-    build:
-      context: ../frontend
-      dockerfile: Dockerfile
-    volumes:
-      - ../frontend/:/app/result_build/
 
   nginx:
     image: nginx:1.19.3
