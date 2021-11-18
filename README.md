@@ -1,3 +1,5 @@
+![yamdb_workflow](https://github.com/EvgeniyBudaev/foodgram-project-react/actions/workflows/foodgram_workflow.yml/badge.svg)
+
 # Яндекс.Практикум. Python backend. Diplom
 
 ## Содержание

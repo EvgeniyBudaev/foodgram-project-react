@@ -68,18 +68,13 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }} # Если ваш ssh-ключ защищён фразой-паролем
-          stack_file_name: docker-compose.yaml
           script: |
-            # Выполняет pull образа с DockerHub
             sudo docker pull ebudaev/foodgram_frontend:v1
             sudo docker pull ebudaev/foodgram:v1
-            # Остановка всех контейнеров
             sudo docker-compose stop
-            # Удаление контейнера backend
             sudo docker-compose rm backend
-            # Создаст файл для переменных окружения
+            rm .env
             touch .env
-            # Наполнит файл переменными окружения из секретов GitHub
             echo DB_ENGINE=${{ secrets.DB_ENGINE }} >> .env
             echo DB_NAME=${{ secrets.DB_NAME }} >> .env
             echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
