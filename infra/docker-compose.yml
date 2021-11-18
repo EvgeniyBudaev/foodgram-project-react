@@ -10,6 +10,18 @@ services:
     env_file:
       - ./.env
 
+  frontend:
+    image: ebudaev/foodgram_frontend:v1
+    container_name: foodgram_frontend
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - ./frontend/:/app/result_build/
+    depends_on:
+      - db
+
   backend:
     image: ebudaev/foodgram:v1
     restart: always
@@ -20,18 +32,6 @@ services:
       - db
     env_file:
       - ./.env
-
-  frontend:
-    image: ebudaev/foodgram_frontend:v1
-    container_name: foodgram_frontend
-    build:
-      context: ../frontend
-      dockerfile: Dockerfile
-    restart: always
-    volumes:
-      - ../frontend/:/app/result_build/
-    depends_on:
-      - db
 
   nginx:
     image: nginx:1.19.3
