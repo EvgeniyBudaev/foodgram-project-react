@@ -71,16 +71,6 @@ scp nginx.conf admin@62.84.119.85:/home/admin/nginx.conf
  docker-compose exec backend python manage.py createsuperuser
 ```
 
-- Устанавливаем зависимости:
-```python
- pip install -r requirements.txt
-```
-
-- Запуск сервера
-```python
- python manage.py runserver
-```
-
 ### <a name="Тесты">Тесты</a>
 ```python
   flake8
