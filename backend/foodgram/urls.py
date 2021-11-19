@@ -6,9 +6,9 @@ from foodgram.views import IngredientsViewSet, RecipeViewSet, TagsViewSet
 app_name = 'foodgram'
 
 router = DefaultRouter()
-router.register('tags', TagsViewSet, basename='tags')
-router.register('ingredients', IngredientsViewSet, basename='ingredients')
-router.register('recipes', RecipeViewSet, basename='recipes')
+router.register(r'tags', TagsViewSet, basename='tags')
+router.register(r'ingredients', IngredientsViewSet, basename='ingredients')
+router.register(r'recipes', RecipeViewSet, basename='recipes')
 
 urlpatterns = [
     path('', include(router.urls)),
