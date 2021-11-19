@@ -65,10 +65,13 @@ class RecipeSerializer(serializers.ModelSerializer):
         read_only_fields = ('author', 'tags',)
 
     def get_is_favorited(self, obj):
-        user = self.context.get('request').user
-        if user.is_anonymous:
+        """Проверка добавлен ли рецепт в избранное."""
+        request = self.context.get('request')
+        if request is None or request.user.is_anonymous:
             return False
-        return Recipe.objects.filter(favorites__user=user, id=obj.id).exists()
+        queryset = Favorite.objects.filter(user=request.user.id,
+                                           recipe=obj.id).exists()
+        return queryset
 
     def get_is_in_shopping_cart(self, obj):
         user = self.context.get('request').user
