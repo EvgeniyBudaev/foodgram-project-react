@@ -94,7 +94,6 @@ jobs:
             sudo docker-compose exec -T backend python manage.py collectstatic --noinput
             sudo docker-compose exec -T backend python manage.py makemigrations --noinput
             sudo docker-compose exec -T backend python manage.py migrate --noinput
-            sudo docker-compose exec -T backend python manage.py loaddata data/ingredients.json
 
   send_message:
     if: github.ref == 'refs/heads/master'
