@@ -11,12 +11,15 @@ services:
 
   frontend:
     image: ebudaev/foodgram_frontend:v1
+    container_name: foodgram_frontend
     volumes:
       - ../frontend/:/app/result_build/
+    depends_on:
+      - db
 
   backend:
-    build: ../backend
     image: ebudaev/foodgram:v1
+    container_name: foodgram
     restart: always
     volumes:
       - static_value:/code/static/
@@ -24,7 +27,7 @@ services:
     depends_on:
       - db
     env_file:
-      - ../.env
+      - ./.env
 
   nginx:
     image: nginx:1.19.3
