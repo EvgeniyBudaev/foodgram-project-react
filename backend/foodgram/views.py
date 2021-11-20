@@ -14,18 +14,18 @@ from foodgram.models import Cart, Favorite, Ingredient, Recipe, Tag
 from foodgram.utils import generate_pdf_shopping_list
 
 
-class IngredientsViewSet(ReadOnlyModelViewSet):
-    """Вьюсет модели Ингредиент."""
-    permission_classes = (IsAdminOrReadOnly,)
-    queryset = Ingredient.objects.all()
-    serializer_class = IngredientSerializer
-
-
 class TagsViewSet(ReadOnlyModelViewSet):
     """Вьюсет модели Тег."""
     permission_classes = (IsAdminOrReadOnly,)
     queryset = Tag.objects.all()
     serializer_class = TagSerializer
+
+
+class IngredientsViewSet(ReadOnlyModelViewSet):
+    """Вьюсет модели Ингредиент."""
+    permission_classes = (IsAdminOrReadOnly,)
+    queryset = Ingredient.objects.all()
+    serializer_class = IngredientSerializer
     filter_backends = (IngredientSearchFilter,)
     search_fields = ('^name',)
 
