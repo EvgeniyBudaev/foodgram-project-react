@@ -20,6 +20,7 @@ class RecipeIngredientInline(admin.TabularInline):
     Для отображения в админке поля ManyToMany ингредиентов в рецепте c through.
     """
     model = RecipeIngredient
+    min_num = 1
     extra = 1
 
 
